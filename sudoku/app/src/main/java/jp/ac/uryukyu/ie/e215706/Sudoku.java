@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 9×9の区間クラス。
- * int[][][] sudoku; //9×9の区間全体
+ *  int[][][] sudoku; //9×9の区間全体
  */
 
 public class Sudoku extends Box{
@@ -22,8 +22,8 @@ public class Sudoku extends Box{
                 }
             }
         }
-        
     }
+    
     public void sudokuPrint(){
         /**
          * 入力された数字を数独の形で出力するメソッド。
@@ -46,6 +46,11 @@ public class Sudoku extends Box{
                 System.out.println("---------------------------");
             }
         }  
+    }
+
+    public void solveSudoku() {
+        Solve memo = new Memo();
+        memo.solve(sudoku);
     }
 
     public int[][][] getSudoku() {
