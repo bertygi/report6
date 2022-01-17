@@ -130,14 +130,35 @@ public class Memo implements Solve{
     ArrayList<ArrayList<TreeSet<Integer>>> memoBox9 = new ArrayList<ArrayList<TreeSet<Integer>>>(Arrays.asList(memoBox9_1,memoBox9_2,memoBox9_3));
     ArrayList<ArrayList<ArrayList<TreeSet<Integer>>>> memoSudoku = new ArrayList<ArrayList<ArrayList<TreeSet<Integer>>>>(Arrays.asList(memoBox1,memoBox2,memoBox3,memoBox4,memoBox5,memoBox6,memoBox7,memoBox8,memoBox9));
 
+    /**
+     * コンストラクタ。
+     */
     public Memo() {
-        
+        initializeMemo();
     }
 
+    /**
+     * メモを初期化するメソッド。
+     */
+    public void initializeMemo() {
+        for (int i=0; i<9; i++) {
+            for (int j=0; j<3; j++) {
+                for (int k=0; k<3; k++) {
+                    TreeSet<Integer> baseBoxI = new TreeSet<Integer>();
+                    baseBoxI = setBoxes.get(i);
+                    baseBoxI.add(result[i][j][k]);
+                    ArrayList<ArrayList<TreeSet<Integer>>> memoBoxI = memoSudoku.get(i);
+                    ArrayList<TreeSet<Integer>> memoBoxI_J = memoBoxI.get(j);
+                    TreeSet<Integer> memoBoxI_J_K = memoBoxI_J.get(k);
+                    memoBoxI_J_K.clear();
+                }
+            }
+        }
+    }
+    /**
+     * 入力された数字を結果値にコピペするメソッド。
+     */
     public void copy(int[][][] sudoku) {
-        /**
-         * 入力された数字を結果値にコピペするメソッド。
-         */
         for (int i=0; i<9; i++) {
             for (int j=0; j<3; j++) {
                 for (int k=0; k<3; k++) {
@@ -149,10 +170,10 @@ public class Memo implements Solve{
         }
     }
 
+    /**
+     * 各小区間内の数字を比較し、空白の候補のメモをとるメソッド。
+     */
     public void memoBox(int[][][] sudoku) {
-        /**
-         * 各小区間内の数字を比較し、空白の候補のメモをとるメソッド。
-         */
         for (int x=0; x<2; x++) {
             for (int i=0; i<9; i++) {
                 for (int j=0; j<3; j++) {
@@ -184,10 +205,10 @@ public class Memo implements Solve{
         }
     }
 
+    /**
+     * 各行内の数字を比較し、空白の候補のメモをとるメソッド。
+     */
     public void memoRow(int[][][] sudoku) {
-        /**
-         * 各行内の数字を比較し、空白の候補のメモをとるメソッド。
-         */
         for (int x=0; x<2; x++) {
             int n = 0;
             int z = 0;
@@ -225,10 +246,10 @@ public class Memo implements Solve{
         }
     }
 
+    /**
+     * 各列内の数字を比較し、空白の候補のメモをとるメソッド。
+     */
     public void memoColumn(int[][][] sudoku) {
-        /**
-         * 各列内の数字を比較し、空白の候補のメモをとるメソッド。
-         */
         for (int x=0; x<2; x++) {
             int n = 0;
             int z = 0;
@@ -266,22 +287,20 @@ public class Memo implements Solve{
         }
     }
 
+    /**
+     * 空白の候補のメモをとるメソッド
+     */
     public void memo(int[][][] sudoku) {
-        /**
-         * 空白の候補のメモをとるメソッド
-         */
-        
-        copy(sudoku);
         memoBox(sudoku);
         memoRow(sudoku);
         memoColumn(sudoku);
     }
     
+    /**
+     * 数独を解くメソッド。
+     */
     @Override
     public void solve (int[][][] sudoku) {
-        /**
-         * 数独を解くメソッド。
-         */
         memo(sudoku);
     }
     

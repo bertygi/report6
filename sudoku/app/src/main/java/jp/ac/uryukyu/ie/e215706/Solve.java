@@ -127,5 +127,8 @@ public interface Solve {
     ArrayList<TreeSet<Integer>> setColumns = new ArrayList<TreeSet<Integer>>(Arrays.asList(setColumn1, setColumn2, setColumn3, setColumn4, setColumn5, setColumn6, setColumn7, setColumn8, setColumn9));
     int[][][] result = {{{resultCell1_1,resultCell1_2,resultCell1_3},{resultCell2_1,resultCell2_2,resultCell2_3},{resultCell3_1,resultCell3_2,resultCell3_3}},{{resultCell1_4,resultCell1_5,resultCell1_6},{resultCell2_4,resultCell2_5,resultCell2_6},{resultCell3_4,resultCell3_5,resultCell3_6}},{{resultCell1_7,resultCell1_8,resultCell1_9},{resultCell2_7,resultCell2_8,resultCell2_9},{resultCell3_7,resultCell3_8,resultCell3_9}},{{resultCell4_1,resultCell4_2,resultCell4_3},{resultCell5_1,resultCell5_2,resultCell5_3},{resultCell6_1,resultCell6_2,resultCell6_3}},{{resultCell4_4,resultCell4_5,resultCell4_6},{resultCell5_4,resultCell5_5,resultCell5_6},{resultCell6_4,resultCell6_5,resultCell6_6}},{{resultCell4_7,resultCell4_8,resultCell4_9},{resultCell5_7,resultCell5_8,resultCell5_9},{resultCell6_7,resultCell6_8,resultCell6_9}},{{resultCell7_1,resultCell7_2,resultCell7_3},{resultCell8_1,resultCell8_2,resultCell8_3},{resultCell9_1,resultCell9_2,resultCell9_3}},{{resultCell7_4,resultCell7_5,resultCell7_6},{resultCell8_4,resultCell8_5,resultCell8_6},{resultCell9_4,resultCell9_5,resultCell9_6}},{{resultCell7_7,resultCell7_8,resultCell7_9},{resultCell8_7,resultCell8_8,resultCell8_9},{resultCell9_7,resultCell9_8,resultCell9_9}}};
 
+    /**
+     * 数独を解くメソッド。
+     */
     public void solve (int[][][] sudoku);
 }
